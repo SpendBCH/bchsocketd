@@ -3,10 +3,11 @@ const cors = require("cors")
 const express = require("express")
 const ip = require("ip")
 const bch = require("bitcore-lib-cash")
-const defaults = { port: 3001 }
+const defaults = { port: 3001, endpoint: "s" }
 const init = function(config) {
   let app = (config.app ? config.app : express())
   let connections = config.connections
+  let endpoint = config.endpoint ? config.endpoint : defaults.endpoint
   app.use(cors())
   app.use(function (req, res, next) {
     res.sseSetup = function() {
@@ -23,7 +24,7 @@ const init = function(config) {
     }
     next()
   })
-  app.get("/s", async function(req, res) {
+  app.get(`/${endpoint}`, async function(req, res) {
     try {
       let query = {
         "v": 3, "q": { "find": {} }
@@ -47,7 +48,7 @@ const init = function(config) {
       console.log(e)
     }
   })
-  app.get(/^\/s\/(.+)/, async function(req, res) {
+  app.get(new RegExp(`^\/${endpoint}\/(.+)`), async function(req, res) {
     try {
       let b64 = req.params[0]
 
