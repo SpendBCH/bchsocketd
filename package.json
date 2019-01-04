@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@spendbch/bigjq": "0.0.8",
     "bcode": "0.0.6",
-    "bigjq": "0.0.7",
     "bitcore-lib-cash": "^0.18.1",
     "cors": "^2.8.4",
     "express": "^4.16.4",
