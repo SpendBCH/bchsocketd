@@ -1,6 +1,6 @@
 {
   "name": "bchsocketd",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The message bus for bitcoin",
   "main": "index.js",
   "scripts": {
